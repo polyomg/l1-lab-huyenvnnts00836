@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+</head>
+<body>
+	<div class="container">
+		<div>
+			<form th:action="@{/login/check}" method="post">
+				<input type="text" name="userName" step="any"><br>
+				<input type="password" name="password" step="any">
+				<button type="submit">Login</button>
+			</form>
+		</div>
+		
+		<div th:if="${success!=null}">
+			<div th:if="${success}" class="message success">
+	            <h2>Success!</h2>
+	            <p th:text="${message}"></p>
+	        </div>
+	        
+	        <div th:unless="${success}" class="message error">
+	            <h2>Error!</h2>
+	            <p th:text="${message}"></p>
+	        </div>
+		</div>
+		<button th:onclick="window.location.href='/poly/hello'">Back</button>
+	</div>
+	
+</body>
+</html>

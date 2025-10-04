@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FormProductB4</title>
+</head>
+
+<body>
+	<form action="/product4/save4" method="post">
+		<input name="name" th:value="${product.name}"> <input name="price" th:value="${product.price}">
+		<button>Save</button>
+	</form>
+
+	<ul>
+		<li th:text="${product.name}">?1name</li>
+		<li th:text="${product.price}">?1price</li>
+	</ul>
+	<hr>
+	<ul>
+		<li th:text="${savedProduct.name}">?2name</li>
+		<li th:text="${savedProduct.price}">?2price</li>
+	</ul>
+
+	<ul th:each="item : ${items}">
+		<li th:text="${item.name}">item.name</li>
+		<li th:text="${item.price}">item.price</li>
+	</ul>
+	<button th:onclick="window.location.href='/menul2'">Back to
+		menu</button>
+	<p>TS00836 - Vũ Nguyễn Nhung Huyền</p>
+</body>
+
+</html>
