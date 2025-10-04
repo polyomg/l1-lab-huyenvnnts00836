@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>a</title>
+</head>
+
+<body>
+	<button th:onclick="window.location.href='/menul2'">Back to menu</button>
+	<button><a th:href="@{/b}">b</a></button>
+	<button><a th:href="@{/c}">c</a></button>
+	<button><a th:href="@{/d}">d</a></button>
+	<h1 th:text="${message}"></h1>
+	<h1 th:text="${param.message}"></h1>
+</body>
+
+</html>
