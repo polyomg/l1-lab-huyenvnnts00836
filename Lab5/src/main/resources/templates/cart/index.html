@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Shopping Cart</h1>
+
+<div th:if="${cart.getCount() == 0}">
+    <p>Your cart is empty</p>
+</div>
+
+<div th:if="${cart.getCount() > 0}">
+    <table border="1" style="width:100%">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="item : ${cart.getItems()}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.name}"></td>
+            <td th:text="'$' + ${#numbers.formatDecimal(item.price, 1, 2)}"></td>
+            <td>
+                <form th:action="@{/cart/update/{id}(id=${item.id})}" method="post" style="display:inline;">
+                    <input type="number" name="qty" th:value="${item.qty}" min="1" style="width:60px;">
+                    <button type="submit">Update</button>
+                </form>
+            </td>
+            <td th:text="'$' + ${#numbers.formatDecimal(item.price * item.qty, 1, 2)}"></td>
+            <td>
+                <a th:href="@{/cart/remove/{id}(id=${item.id})}"
+                   onclick="return confirm('Are you sure?')">Remove</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3"><strong>Total</strong></td>
+            <td th:text="${cart.getCount()}"></td>
+            <td th:text="'$' + ${#numbers.formatDecimal(cart.getAmount(), 1, 2)}"></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <br>
+    <a th:href="@{/cart/clear}" onclick="return confirm('Clear all items?')">Clear Cart</a>
+</div>
+
+<br>
+<a th:href="@{/item/index}">Continue Shopping</a>
+</body>
+</html>
