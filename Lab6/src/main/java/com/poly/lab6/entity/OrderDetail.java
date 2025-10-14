@@ -1,12 +1,13 @@
-package Lab6.entity;
+package com.poly.lab6_1.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
 import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name = "Orderdetails")
+@Table(name = "OrderDetails")
 public class OrderDetail implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

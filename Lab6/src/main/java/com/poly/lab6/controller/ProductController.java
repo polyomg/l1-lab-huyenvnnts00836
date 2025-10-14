@@ -1,12 +1,11 @@
-package Lab6.controller;
+package com.poly.lab6_1.controller;
 
-import java.util.List;
-import java.util.Optional;
-
+import com.poly.lab6_1.dao.ProductDAO;
+import com.poly.lab6_1.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
@@ -14,8 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import Lab6.dao.ProductDAO;
-import Lab6.entity.Product;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ProductController {
@@ -26,7 +25,7 @@ public class ProductController {
     @RequestMapping("/product/sort")
     public String sort(Model model, @RequestParam("field") Optional<String> field) {
         String sortField = field.orElse("price");
-        Sort sort = Sort.by(Direction.DESC, sortField);
+        Sort sort = Sort.by(Direction.ASC, sortField);
 
         List<Product> items = dao.findAll(sort);
         model.addAttribute("items", items);
@@ -53,11 +52,11 @@ public class ProductController {
             // mặc định 0
             int pageIndex = p.orElse(0);
 
-            // (mặc định price
+            // mặc định price
             String sortField = field.orElse("price");
 
             // Tạo trang, kích thước, sắp xếp
-            Pageable pageable = PageRequest.of(pageIndex, 5, Sort.by(Sort.Direction.DESC, sortField));
+            Pageable pageable = PageRequest.of(pageIndex, 5, Sort.by(Direction.ASC, sortField));
 
             Page<Product> page = dao.findAll(pageable);
 

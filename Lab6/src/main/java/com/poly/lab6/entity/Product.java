@@ -1,7 +1,8 @@
-package Lab6.entity;
+package com.poly.lab6_1.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;

@@ -1,6 +1,6 @@
-package Lab6.dao;
+package com.poly.lab6_1.dao;
 
-import Lab6.entity.Account;
+import com.poly.lab6_1.entity.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AccountDAO extends JpaRepository<Account, String> {

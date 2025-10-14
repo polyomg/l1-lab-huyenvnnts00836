@@ -1,9 +1,11 @@
-package Lab6.controller;
+package com.poly.lab6_1.controller;
 
-import Lab6.dao.ProductDAO;
-import Lab6.entity.Product;
+import com.poly.lab6_1.dao.ProductDAO;
+import com.poly.lab6_1.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 

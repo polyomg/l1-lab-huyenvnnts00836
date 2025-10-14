@@ -1,7 +1,11 @@
-package Lab6.entity;
+package com.poly.lab6_1.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.Data;
+
 import java.io.Serializable;
 import java.util.List;
 
